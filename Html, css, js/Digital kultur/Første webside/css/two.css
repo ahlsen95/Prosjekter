@@ -1,0 +1,91 @@
+body{
+  background-color:black;
+  height:100%;
+  margin:0;
+}
+#background{
+  opacity: 0.4;
+  position:fixed;
+  top:0;
+  max-width:100%;
+  z-index: -1;
+}
+#scrolling{
+  margin:auto;
+  height:100%;
+  width:65%;
+  background-color:#d6d5c9;
+}
+a{
+  position:fixed;
+  left: 63%;
+  top:550px;
+  z-index:1;
+  font-family: "Tahoma", sans-serif;
+}
+.room{
+  width:35%;
+  margin-left:200px;
+}
+.room:hover .closed{
+  opacity: 0;
+}
+
+.closed{
+  position:absolute;
+
+}
+.room:hover .greeting, .room:hover #isAway{
+  display:block;
+}
+h1{
+  position:relative;
+  right:1.5em;
+  color: #728BA9;
+  font-size:65px;
+  font-family:sans-serif;
+  z-index: 1;
+  top:30px;
+}
+#r302{
+  text-decoration: line-through;
+}
+p{
+  position:fixed;
+  font-family:"Tahoma",sans-serif;
+  top:240px;
+  left:60%;
+  width:220px;
+  display:none;
+}
+
+section#border{
+  position:fixed;
+  width:250px;
+  height:250px;
+  left: 59%;
+  top: 200px;
+  border-color:black;
+  background-color:white;
+  border-radius: 15px 50px 30px 5px;
+  border-style:solid;
+}
+@media screen and (max-width:1450px) {
+
+  section#border{
+    width:200px;
+  }
+  #scrolling{
+    min-width:1000px;
+  }
+  p{
+    width:170px;
+  }
+}
+.room:hover #room302{
+  -webkit-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  transition: opacity 1s ;
+  opacity:0.1;
+}

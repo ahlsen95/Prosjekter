@@ -1,0 +1,66 @@
+% 1. Title: Database for inviting people to party
+% 
+% 2. Purpose: Data for students to play with using Weka in INFO283 at University of Bergen
+%  
+% 3. Number of Instances: 28
+% 
+% 4. Number of Attributes: 9 (all nominal)
+% 
+% 5. Attribute Information:
+%     -- 2 Classes
+%      1 (good) : the person is a good invitee for a student party
+%      2 (bad)  : the person is a bad invitee for a student party
+% 
+%     1. age: (1) young, (2) middle, (3) old 
+%	  2. gender: (1) man, (2) woman
+%     3. faculty: (1) natural-science, (2) medicine, (3) social-science, (4) humanistic, (5) law
+%	  4. culture: (1) high-culture, (2) pop-culture, (3) low-culture
+%     5. outgoing: (1) yes, (2) somewhat, (3) no
+%     6. sporting: (1) yes, (2) somewhat, (3) no
+%     7. alcohol-use: (1) none, (2) some, (3) much
+%     8. smoker: (1) no, (2) party-smoker, (3) yes
+% 
+
+@relation party-invitation
+
+@attribute age {young,middle,old}
+@attribute gender {man, woman}
+@attribute faculty {natural-science, medicine, social-science, humanistic, law}
+@attribute culture {high-culture, pop-culture, low-culture}
+@attribute outgoing {yes,somewhat,no}
+@attribute sporting {yes, somewhat,no}
+@attribute alcohol-use {none, some, much}
+@attribute smoker {no, party-smoker, yes}
+
+@attribute classification {good,bad}
+
+@data
+young,man,humanistic,pop-culture,somewhat,somewhat,much,yes,good
+young,woman,medicine,high-culture,somewhat,no,none,no,bad
+middle,woman,natural-science,low-culture,yes,yes,some,no,good
+middle,man,natural-science,high-culture,somewhat,yes,some,no,bad
+middle,woman,medicine,high-culture,yes,somewhat,some,no,good
+middle,man,social-science,pop-culture,yes,no,much,yes,good
+middle,woman,law,low-culture,somewhat,yes,some,no,bad
+middle,woman,law,low-culture,yes,no,much,party-smoker,good
+old,man,social-science,pop-culture,somewhat,yes,much,party-smoker,good
+old,woman,law,low-culture,no,no,none,no,bad
+young,woman,social-science,low-culture,no,yes,much,no,good
+middle,man,natural-science,low-culture,somewhat,somewhat,some,party-smoker,bad
+old,woman,social-science,low-culture,yes,no,none,no,good
+old,man,humanistic,pop-culture,somewhat,no,much,yes,bad
+middle,man,law,low-culture,no,yes,some,no,bad
+young,woman,social-science,low-culture,no,no,none,no,bad
+young,woman,social-science,pop-culture,no,no,some,no,good
+young,man,natural-science,low-culture,somewhat,no,some,no,bad
+middle,woman,medicine,high-culture,somewhat,somewhat,some,no,bad
+old,man,natural-science,pop-culture,somewhat,somewhat,much,no,good
+old,man,natural-science,low-culture,no,somewhat,none,no,bad
+old,man,medicine,high-culture,yes,no,much,party-smoker,bad
+middle,man,social-science,pop-culture,yes,no,much,party-smoker,good
+young,woman,humanistic,high-culture,somewhat,no,much,no,good
+old,man,medicine,pop-culture,no,no,some,no,bad
+middle,man,humanistic,pop-culture,yes,somewhat,much,party-smoker,good
+young,woman,humanistic,high-culture,somewhat,somewhat,some,party-smoker,good
+old,woman,medicine,high-culture,yes,yes,none,no,good
+
