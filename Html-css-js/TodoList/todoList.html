@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src ="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Todo List</title>
+</head>
+<body>
+  <div class ="grid-container">
+    <section id ="menuSection">
+      <ul id = "navigation">
+        <li><button type="button" onclick="test()">All</button></li>
+        <li>Incomplete</li>
+        <li>Completed</li>
+        </ul>
+    </section>
+    <section id ="addSection">
+      <input type="text" id ="inputTask" placeholder ="Enter your task..." onkeydown="newTask()">
+    </section>
+    <section id ="taskSection">
+      <ul id="taskList">
+        <li>
+          Finish app 1
+        </li>
+        <li>
+          Finish app 2
+        </li>
+        <li>
+          Finish app 3
+        </li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
