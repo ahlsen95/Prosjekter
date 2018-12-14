@@ -1,59 +1,91 @@
 
 /*
-// TODO: Sortere oppgavene etter hvem som er huket av og ikke.
+// TODO: Fikse close button
 */
+var myTaskList={
+  completed:[],
+  incomplete:[]
+};
+var counter = 1;
+
+// TODO: trenger kommentar og navn
 function test(){
-  var myTaskList = document.getElementById("taskList").getElementsByTagName("LI");
-  for(var i = 0; i < myTaskList.length; i++){
-    if(myTaskList[i].classList.value){
-      myTaskList[i].style.display ="none";
+  activeTab();
+  for(var x in myTaskList){
+    if(myTaskList[x].length != 0){
+      console.log(myTaskList[x]);
+      if(myTaskList.x.classList.value === "checked"){
+        myTaskList[i].style.display ="none";
+      }
     }
   }
 }
 
+
 //Creating a close button and appending it to the items in the list
-function addCloseButton(){
-  var myTaskList = document.getElementById("taskList").getElementsByTagName("LI");
-  for(var i = 0; i < myTaskList.length; i++){
-    var span = document.createElement("SPAN");
-    var txt = document.createTextNode("\u00D7");
-    span.className = "close";
-    span.appendChild(txt);
-    if(myTaskList[i].childNodes.length < 2){
-      removeTask(span);
-      myTaskList[i].appendChild(span);
-    }
-  }
+function addCloseButton(task){
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  removeTask(span, task);
+  task.appendChild(span);
 }
 
 //Removing task when clicking on "x"
-function removeTask(span){
+function removeTask(span, task){
   span.onclick = function(){
-    var task = this.parentElement;
-    var list = document.getElementById("taskList");
-    list.removeChild(task);
+    if(task.classList.value === "checked"){
+      var index = myTaskList.completed.indexOf(task);
+      myTaskList.completed.splice(index, 1);
+      updateTaskList();
+      console.log(task);
+    }
+    if(task.classList.value === ""){
+      var index = myTaskList.incomplete.indexOf(task);
+      myTaskList.incomplete.splice(index, 1);
+      updateTaskList();
+    }
   }
 }
-
 // Adding "checked" when clicking on a task
-function addChecked(){
-  var list = document.querySelector("#taskList");
-  list.addEventListener("click", function(ev){
+function addChecked(task){
+  task.addEventListener("click", function(ev){
     if (ev.target.tagName ==="LI"){
       ev.target.classList.toggle("checked");
+      moveTask(ev.target);
     }
   },false);
 }
 
+//Moving task between "completed" and "incomplete" based on it being checked or not
+function moveTask(task){
+  if(task.classList.value === "checked"){
+    myTaskList.completed.push(task);
+    var index = myTaskList.incomplete.indexOf(task);
+    myTaskList.incomplete.splice(index, 1);
+    updateTaskList();
+  }
+  if(task.classList.value === ""){
+    myTaskList.incomplete.push(task);
+    var index = myTaskList.completed.indexOf(task);
+    myTaskList.completed.splice(index, 1);
+    updateTaskList();
+  }
+}
+
 //Adding a task based on input from user
 function addTask(task){
-  var myTaskList = document.getElementById("taskList");
   var txt = document.createTextNode(task);
   var li = document.createElement("LI");
   li.appendChild(txt);
-  myTaskList.appendChild(li);
-  addCloseButton();
-  addChecked();
+  li.id=counter;
+  counter++;
+  console.log(li);
+  myTaskList.incomplete.push(li);
+  addCloseButton(li);
+  addChecked(li);
+  updateTaskList();
 }
 
 //Setting up a new task element
@@ -75,4 +107,57 @@ function validTask(task){
     return false;
   }
   return true;
+}
+
+//Sets which tab to be active
+function activeTab(){
+  var tabs = document.getElementsByClassName("menuTab");
+
+  //Looping through the elements and adding "active" to the clicked tab
+  for(var i = 0; i < tabs.length; i++){
+    tabs[i].addEventListener("click", function(){
+      var current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+      updateTaskList();
+    });
+  }
+}
+
+function updateTaskList(){
+  var aTab = document.getElementsByClassName("active");
+  var list = document.querySelector("#taskList");
+  emptyList(list);
+  sortTasks();
+  if(aTab[0].innerText == "Incomplete"){
+    for(var i = 0; i < myTaskList.incomplete.length; i++){
+      list.appendChild(myTaskList.incomplete[i]);
+    }
+  }
+  if(aTab[0].innerText == "Completed"){
+    for(var i = 0; i < myTaskList.completed.length; i++){
+      list.appendChild(myTaskList.completed[i]);
+    }
+  }
+  for(var x in myTaskList){
+    if(aTab[0].innerText == "All"){
+      for(var i = 0; i < myTaskList[x].length; i++){
+        list.appendChild(myTaskList[x][i]);
+      }
+    }
+  }
+}
+
+function sortTasks(){
+  myTaskList.completed.sort(function(a, b) {
+    return (a.id - b.id);
+  });
+  myTaskList.incomplete.sort(function(a, b) {
+    return (a.id - b.id);
+  });
+}
+function emptyList(list){
+  while (list.firstChild) {
+    list.removeChild(list.firstChild);
+  }
 }

@@ -12,13 +12,10 @@
   <div class ="grid-container">
     <section id ="menuSection">
       <ul id = "navigation">
-        <li><button type="button" onclick="test()">All</button></li>
-        <li>Incomplete</li>
-        <li>Completed</li>
-        </ul>
-    </section>
-    <section id ="addSection">
-      <input type="text" id ="inputTask" placeholder ="Enter your task..." onkeydown="newTask()">
+        <li class = "menuTab active"><button type="button" onclick="test()">All</button></li>
+        <li class = "menuTab">Incomplete</li>
+        <li class = "menuTab">Completed</li>
+      </ul>
     </section>
     <section id ="taskSection">
       <ul id="taskList">
@@ -32,6 +29,9 @@
           Finish app 3
         </li>
       </ul>
+    </section>
+    <section id ="addSection">
+      <input type="text" id ="inputTask" placeholder ="Enter your task..." onkeydown="newTask()">
     </section>
   </div>
 </body>
