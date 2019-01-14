@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src ="script.js"></script>
   <link rel="stylesheet" href="style.css">
   <title>Todo List</title>
 </head>
@@ -12,27 +11,19 @@
   <div class ="grid-container">
     <section id ="menuSection">
       <ul id = "navigation">
-        <li class = "menuTab active"><button type="button" onclick="test()">All</button></li>
+        <li class = "menuTab active">All</li>
         <li class = "menuTab">Incomplete</li>
         <li class = "menuTab">Completed</li>
       </ul>
     </section>
     <section id ="taskSection">
       <ul id="taskList">
-        <li>
-          Finish app 1
-        </li>
-        <li>
-          Finish app 2
-        </li>
-        <li>
-          Finish app 3
-        </li>
       </ul>
     </section>
     <section id ="addSection">
-      <input type="text" id ="inputTask" placeholder ="Enter your task..." onkeydown="newTask()">
+      <input type="text" id ="inputTask" placeholder ="Enter your task...">
     </section>
   </div>
+  <script src ="script.js"></script>
 </body>
 </html>

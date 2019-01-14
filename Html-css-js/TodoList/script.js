@@ -1,26 +1,18 @@
 
 /*
-// TODO: Fikse close button
+// TODO:
 */
 var myTaskList={
   completed:[],
   incomplete:[]
 };
 var counter = 1;
+const input = document.querySelector("input");
 
-// TODO: trenger kommentar og navn
-function test(){
+window.onload = function(){
   activeTab();
-  for(var x in myTaskList){
-    if(myTaskList[x].length != 0){
-      console.log(myTaskList[x]);
-      if(myTaskList.x.classList.value === "checked"){
-        myTaskList[i].style.display ="none";
-      }
-    }
-  }
+  addTask("Make a Task!");
 }
-
 
 //Creating a close button and appending it to the items in the list
 function addCloseButton(task){
@@ -39,7 +31,6 @@ function removeTask(span, task){
       var index = myTaskList.completed.indexOf(task);
       myTaskList.completed.splice(index, 1);
       updateTaskList();
-      console.log(task);
     }
     if(task.classList.value === ""){
       var index = myTaskList.incomplete.indexOf(task);
@@ -81,7 +72,6 @@ function addTask(task){
   li.appendChild(txt);
   li.id=counter;
   counter++;
-  console.log(li);
   myTaskList.incomplete.push(li);
   addCloseButton(li);
   addChecked(li);
@@ -89,7 +79,7 @@ function addTask(task){
 }
 
 //Setting up a new task element
-function newTask(){
+input.addEventListener("keydown", function(event){
   if(event.key === "Enter"){
     var task = document.getElementById("inputTask").value;
     if(validTask(task)){
@@ -99,7 +89,7 @@ function newTask(){
       window.alert("You have not written anything! Please fill out a task.")
     }
   }
-}
+});
 
 //Checking if task is in a valid form
 function validTask(task){
